@@ -1,8 +1,7 @@
 # COURSE ABOUT NET C# FRAMEWORK 4.8 & NET 6
 _(juste en dessous des badges sympatiques à placer)_
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
-
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)]
 Ce projet a pour but de revenir sur les elements principaux du langage C# et d'aborder
 le nouvelle version NET6 et la mise en place d'un application ASP.NET6 avec Visual Studio Communinity 2022
 
