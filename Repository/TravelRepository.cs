@@ -31,15 +31,20 @@ namespace MyTravelMicroservice.Repository
             
          
         }
-        
+        /// <summary>
+        /// creation d'un nouveau travel
+        /// </summary>
+        /// <param name="travel"></param>
         public void CreateTravel(Travel travel)
         {
-            throw new System.NotImplementedException();
+            this._context.Travels.Add(travel);
+            this._context.SaveChanges();
+
         }
 
 
         /// <summary>
-        /// 
+        /// Suppression d'un travel par id
         /// </summary>
         /// <param name="id"></param>
         /// <exception cref="System.NotImplementedException"></exception>
@@ -72,17 +77,22 @@ namespace MyTravelMicroservice.Repository
         } 
        
         /// <summary>
-        /// 
+        /// Retourne un travel  en fonction de l'id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public Travel GetTravelById(int id)
         {
    
-     
             return _context.Travels.FirstOrDefault(t => t.Id == id);
         }
 
+
+        /// <summary>
+        /// Mise a jour d'un travel
+        /// </summary>
+        /// <param name="travel"></param>
+        /// <exception cref="System.NotImplementedException"></exception>
         public void UpdateTravel(Travel travel)
         {
             throw new System.NotImplementedException();

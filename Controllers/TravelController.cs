@@ -57,7 +57,7 @@ namespace MyTravelMicroservice.Controllers
             if (travelId == null)
             {
 
-                return NotFound($"Does exist in database");
+                return NotFound($"Does not exist in database");
             }
             return travelId;
 
@@ -73,7 +73,7 @@ namespace MyTravelMicroservice.Controllers
 
                 if (travelId == null)
                 {
-                    return NotFound(travel.Message = $"Does not exist intg database");
+                    return NotFound(travel.Message = $"Does not exist in  database");
                 }
            
 
@@ -82,9 +82,17 @@ namespace MyTravelMicroservice.Controllers
 
         }
 
-
-
-
-       
+        [HttpPost]
+       public IActionResult AddTravel(Travel newtravel)
+        {
+            if(travel != null)
+            {
+                travel.CreateTravel(newtravel);
+                return CreatedAtAction(nameof(GetTravelById), new { id = newtravel.Id }, newtravel);
+            }
+           
+            return BadRequest($"unable to add a new item");
+          
+        }
     }
 }
