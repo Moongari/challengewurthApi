@@ -18,7 +18,7 @@ namespace MyTravelMicroservice.Repository
 
         public void CreateTravel(Travel travel);
 
-        public void UpdateTravel(Travel travel);
+        public void UpdateTravel(int id, Travel travel);
 
         public Travel DeleteTravelById(int id);
 

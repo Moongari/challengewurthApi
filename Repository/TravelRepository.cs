@@ -93,9 +93,24 @@ namespace MyTravelMicroservice.Repository
         /// </summary>
         /// <param name="travel"></param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void UpdateTravel(Travel travel)
+        public void UpdateTravel(int id,Travel travel)
         {
-            throw new System.NotImplementedException();
+            var updateTravel =  _context.Travels.Find(id);
+         
+
+            if (updateTravel != null)
+            {
+                updateTravel.Id = id;
+                updateTravel.City = travel.City;
+                updateTravel.Start_date = travel.Start_date;
+                updateTravel.End_date = travel.End_date;
+                updateTravel.Status = travel.Status;
+                updateTravel.Price = travel.Price;
+                updateTravel.Color = travel.Color;
+                _context.Travels.Update(updateTravel);
+                _context.SaveChanges();
+             
+            }
         }
 
 

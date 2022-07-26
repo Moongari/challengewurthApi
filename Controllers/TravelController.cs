@@ -83,16 +83,37 @@ namespace MyTravelMicroservice.Controllers
         }
 
         [HttpPost]
-       public IActionResult AddTravel(Travel newtravel)
+       public async  Task<IActionResult> AddTravel(Travel newtravel)
         {
             if(travel != null)
             {
-                travel.CreateTravel(newtravel);
+               await Task.Run(()=> travel.CreateTravel(newtravel));
                 return CreatedAtAction(nameof(GetTravelById), new { id = newtravel.Id }, newtravel);
             }
            
             return BadRequest($"unable to add a new item");
           
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTravel(int id, Travel Updatetravel)
+        {
+            if (!id.Equals(Updatetravel.Id))
+            {
+                return BadRequest("IDs are different");
+            }
+
+            await Task.Run(() => travel.UpdateTravel(id, Updatetravel));
+
+            if (Updatetravel == null)
+            {
+                return NotFound($"Travel with Id= {id} not found");
+            }
+            else
+            {
+                return CreatedAtAction(nameof(GetTravelById), new { id = Updatetravel.Id }, Updatetravel);
+            }
+        }
+            
     }
 }
