@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyTravelMicroservice.Model;
 using MyTravelMicroservice.Repository;
 using System;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyTravelMicroservice.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public  class TravelController : ControllerBase
@@ -23,7 +25,7 @@ namespace MyTravelMicroservice.Controllers
             travel = new TravelRepository(_context);
          
         }
-
+        //GET: api/travels
        [HttpGet]
         public  ActionResult<IEnumerable<Travel>> GetAllTravel()
         {
@@ -45,7 +47,7 @@ namespace MyTravelMicroservice.Controllers
         {
             throw new NotImplementedException("unable to load data");
         }
-
+        //GET : api/Travel/1
         [HttpGet("{id}")]
         public ActionResult<Travel> GetTravelById(int id)
         {
@@ -63,7 +65,7 @@ namespace MyTravelMicroservice.Controllers
 
         
         }
-
+        //DELETE: api/travel/1
         [HttpDelete("{id}")]
         public ActionResult<Travel> Delete(int id)
         {
@@ -81,7 +83,7 @@ namespace MyTravelMicroservice.Controllers
             return Ok(travel.Message.ToString());
 
         }
-
+        //POST : api/travels
         [HttpPost]
        public async  Task<IActionResult> AddTravel(Travel newtravel)
         {
@@ -94,7 +96,7 @@ namespace MyTravelMicroservice.Controllers
             return BadRequest($"unable to add a new item");
           
         }
-
+        //PUT : api/travel/id
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTravel(int id, Travel Updatetravel)
         {

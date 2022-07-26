@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MyTravelMicroservice.Handlers;
 using MyTravelMicroservice.Model;
 
 namespace MyTravelMicroservice
@@ -36,6 +38,8 @@ namespace MyTravelMicroservice
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyTravelMicroservice", Version = "v1" });
             });
+            //authentication Basic declaration
+            services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +53,7 @@ namespace MyTravelMicroservice
             }
 
             app.UseRouting();
-     
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
