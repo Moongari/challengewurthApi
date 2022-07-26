@@ -15,6 +15,7 @@ namespace MyTravelMicroservice.Repository
     {
 
         private readonly TravelDbContext _context;
+        public string Message { get; set; }
        
 
         // definit un middleware injection dependance
@@ -33,9 +34,27 @@ namespace MyTravelMicroservice.Repository
             throw new System.NotImplementedException();
         }
 
-        public void DeleteTravelById(int id)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public Travel DeleteTravelById(int id)
         {
-            throw new System.NotImplementedException();
+            var travel = _context.Travels.FirstOrDefault(x => x.Id == id);
+            if (travel == null)
+            {
+                Message = $" Travel id : {travel.Id}  does not exist ";
+                return null;
+            }
+            else
+            {
+                _context.Travels.Remove(travel);
+                _context.SaveChanges();
+                Message = $" travel with id : {travel.Id} deleted successfully ";
+            }
+            return travel;
         }
 
         /// <summary>
@@ -49,7 +68,11 @@ namespace MyTravelMicroservice.Repository
             return _context.Travels.ToList();
         } 
        
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Travel GetTravelById(int id)
         {
    

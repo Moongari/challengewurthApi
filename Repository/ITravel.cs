@@ -9,6 +9,8 @@ namespace MyTravelMicroservice.Repository
     /// </summary>
     public interface ITravel
     {
+
+        public string Message { get; set; }
         public List<Travel> GetAllTravel();
         public Travel GetTravelById(int id);
 
@@ -17,7 +19,7 @@ namespace MyTravelMicroservice.Repository
 
         public void UpdateTravel(Travel travel);
 
-        public void DeleteTravelById(int id);
+        public Travel DeleteTravelById(int id);
 
 
     }

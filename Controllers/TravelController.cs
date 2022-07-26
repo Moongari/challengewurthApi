@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyTravelMicroservice.Model;
 using MyTravelMicroservice.Repository;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,9 +11,12 @@ namespace MyTravelMicroservice.Controllers
     [ApiController]
     public class TravelController : ControllerBase
     {
-        private  static TravelDbContext _context;
+        private static TravelDbContext _context;
         private static ITravel travel;
-
+        /// <summary>
+        /// injection des dependances middelware
+        /// </summary>
+        /// <param name="context"></param>
         public  TravelController(TravelDbContext context)
         {
             _context = context;
@@ -22,8 +26,20 @@ namespace MyTravelMicroservice.Controllers
        [HttpGet]
         public  ActionResult<IEnumerable<Travel>> GetAllTravel()
         {
+            if(travel != null)
+            {
+                return travel.GetAllTravel();
+            }
+            else
+            {
+                return NotFoundResult();
+            }
+        
+        }
 
-            return  travel.GetAllTravel();
+        private ActionResult<IEnumerable<Travel>> NotFoundResult()
+        {
+            throw new NotImplementedException("unable to load data");
         }
 
         [HttpGet("{id}")]
@@ -34,11 +50,21 @@ namespace MyTravelMicroservice.Controllers
             if (travelId == null)
             {
 
-                return NotFound();
+                return NotFound($"this id :  {travelId} not exist in database");
             }
             return travelId;
 
         
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Travel> Delete(int id)
+        {
+            
+             var travelId = travel.DeleteTravelById(id);
+            if (travelId == null) { return NotFound(travel.Message); }
+
+            return Ok(travel.Message.ToString());
         }
     }
 }
