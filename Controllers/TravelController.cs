@@ -9,10 +9,10 @@ namespace MyTravelMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TravelController : ControllerBase
+    public  class TravelController : ControllerBase
     {
         private static TravelDbContext _context;
-        private static ITravel travel;
+        private static TravelRepository travel;
         /// <summary>
         /// injection des dependances middelware
         /// </summary>
@@ -21,14 +21,18 @@ namespace MyTravelMicroservice.Controllers
         {
             _context = context;
             travel = new TravelRepository(_context);
+         
         }
 
        [HttpGet]
         public  ActionResult<IEnumerable<Travel>> GetAllTravel()
         {
-            if(travel != null)
+           
+            if (travel != null)
             {
+             
                 return travel.GetAllTravel();
+                
             }
             else
             {
@@ -45,12 +49,15 @@ namespace MyTravelMicroservice.Controllers
         [HttpGet("{id}")]
         public ActionResult<Travel> GetTravelById(int id)
         {
+            travel.isLoaded = true;
             var travelId = travel.GetTravelById(id);
+          
+          
 
             if (travelId == null)
             {
 
-                return NotFound($"this id :  {travelId} not exist in database");
+                return NotFound($"Does exist in database");
             }
             return travelId;
 
@@ -60,11 +67,24 @@ namespace MyTravelMicroservice.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Travel> Delete(int id)
         {
-            
-             var travelId = travel.DeleteTravelById(id);
-            if (travelId == null) { return NotFound(travel.Message); }
+
+
+            var travelId = travel.DeleteTravelById(id) ;
+
+                if (travelId == null)
+                {
+                    return NotFound(travel.Message = $"Does not exist intg database");
+                }
+           
+
 
             return Ok(travel.Message.ToString());
+
         }
+
+
+
+
+       
     }
 }

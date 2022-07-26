@@ -2,6 +2,7 @@
 using MyTravelMicroservice.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace MyTravelMicroservice.Repository
@@ -16,7 +17,9 @@ namespace MyTravelMicroservice.Repository
 
         private readonly TravelDbContext _context;
         public string Message { get; set; }
-       
+        public bool isLoaded { get; set; }
+
+
 
         // definit un middleware injection dependance
         public  TravelRepository(TravelDbContext dbContext)
@@ -24,7 +27,7 @@ namespace MyTravelMicroservice.Repository
 
             this._context = dbContext;
           
-                dbContext.readJsonFileAndInsertToDatabase().Wait();
+              
             
          
         }
@@ -45,7 +48,7 @@ namespace MyTravelMicroservice.Repository
             var travel = _context.Travels.FirstOrDefault(x => x.Id == id);
             if (travel == null)
             {
-                Message = $" Travel id : {travel.Id}  does not exist ";
+               
                 return null;
             }
             else
@@ -84,5 +87,8 @@ namespace MyTravelMicroservice.Repository
         {
             throw new System.NotImplementedException();
         }
+
+
+       
     }
 }
