@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyTravelMicroservice.Model;
 using MyTravelMicroservice.Repository;
@@ -26,7 +27,9 @@ namespace MyTravelMicroservice.Controllers
          
         }
         //GET: api/travels
-       [HttpGet]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(Travel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public  ActionResult<IEnumerable<Travel>> GetAllTravel()
         {
            
@@ -45,21 +48,21 @@ namespace MyTravelMicroservice.Controllers
 
         private ActionResult<IEnumerable<Travel>> NotFoundResult()
         {
-            throw new NotImplementedException("unable to load data");
+            throw new NotImplementedException(travel.Message = "unable to load data");
         }
         //GET : api/Travel/1
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Travel> GetTravelById(int id)
         {
-            travel.isLoaded = true;
+       
             var travelId = travel.GetTravelById(id);
-          
-          
 
             if (travelId == null)
             {
 
-                return NotFound($"Does not exist in database");
+                return NotFound(travel.Message = $"Does not exist in  database");
             }
             return travelId;
 
@@ -67,6 +70,8 @@ namespace MyTravelMicroservice.Controllers
         }
         //DELETE: api/travel/1
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Travel> Delete(int id)
         {
 
@@ -85,7 +90,9 @@ namespace MyTravelMicroservice.Controllers
         }
         //POST : api/travels
         [HttpPost]
-       public async  Task<IActionResult> AddTravel(Travel newtravel)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async  Task<IActionResult> AddTravel(Travel newtravel)
         {
             if(travel != null)
             {
@@ -93,23 +100,25 @@ namespace MyTravelMicroservice.Controllers
                 return CreatedAtAction(nameof(GetTravelById), new { id = newtravel.Id }, newtravel);
             }
            
-            return BadRequest($"unable to add a new item");
+            return BadRequest(travel.Message = $"unable to add a new item");
           
         }
         //PUT : api/travel/id
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateTravel(int id, Travel Updatetravel)
         {
             if (!id.Equals(Updatetravel.Id))
             {
-                return BadRequest("IDs are different");
+                return BadRequest(travel.Message = "IDs are different");
             }
 
             await Task.Run(() => travel.UpdateTravel(id, Updatetravel));
 
             if (Updatetravel == null)
             {
-                return NotFound($"Travel with Id= {id} not found");
+                return NotFound(travel.Message = $"Travel with Id= {id} not found");
             }
             else
             {
