@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MyTravelMicroservice.Model;
 using MyTravelMicroservice.Repository;
 using System;
@@ -15,28 +16,35 @@ namespace MyTravelMicroservice.Controllers
     public  class TravelController : ControllerBase
     {
         private static TravelDbContext _context;
-        private static TravelRepository travel;
+        private static ITravel travel;
+        private readonly ILogger<TravelRepository> _logger;
         /// <summary>
         /// injection des dependances middelware
         /// </summary>
         /// <param name="context"></param>
-        public  TravelController(TravelDbContext context)
+        public  TravelController(TravelDbContext context, ILogger<TravelRepository> logger)
         {
             _context = context;
             travel = new TravelRepository(_context);
-         
+            _logger = logger;
         }
+
+    
+
+
         //GET: api/travels
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(Travel))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public  ActionResult<IEnumerable<Travel>> GetAllTravel()
+        public ActionResult<IEnumerable<Travel>> GetAllTravel()
         {
            
             if (travel != null)
             {
-             
+
+                _logger.LogInformation("List of all Travel");
                 return travel.GetAllTravel();
+
                 
             }
             else
@@ -56,9 +64,9 @@ namespace MyTravelMicroservice.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Travel> GetTravelById(int id)
         {
-       
+            
             var travelId = travel.GetTravelById(id);
-
+            
             if (travelId == null)
             {
 
@@ -80,7 +88,8 @@ namespace MyTravelMicroservice.Controllers
 
                 if (travelId == null)
                 {
-                    return NotFound(travel.Message = $"Does not exist in  database");
+                //_logger.LogWarning("Does not exist in  database");
+                return NotFound(travel.Message = $"Does not exist in  database");
                 }
            
 
@@ -99,7 +108,7 @@ namespace MyTravelMicroservice.Controllers
                await Task.Run(()=> travel.CreateTravel(newtravel));
                 return CreatedAtAction(nameof(GetTravelById), new { id = newtravel.Id }, newtravel);
             }
-           
+            //_logger.LogWarning(travel.Message = $"unable to add a new item");
             return BadRequest(travel.Message = $"unable to add a new item");
           
         }
@@ -111,6 +120,7 @@ namespace MyTravelMicroservice.Controllers
         {
             if (!id.Equals(Updatetravel.Id))
             {
+                //_logger.LogWarning("Bad Request : IDs are different");
                 return BadRequest(travel.Message = "IDs are different");
             }
 
@@ -118,6 +128,7 @@ namespace MyTravelMicroservice.Controllers
 
             if (Updatetravel == null)
             {
+                //_logger.LogWarning(travel.Message = $"Travel with Id= {id} not found");
                 return NotFound(travel.Message = $"Travel with Id= {id} not found");
             }
             else

@@ -26,10 +26,7 @@ namespace MyTravelMicroservice.Repository
         {
 
             this._context = dbContext;
-          
-              
-            
-         
+ 
         }
         /// <summary>
         /// creation d'un nouveau travel
@@ -71,8 +68,7 @@ namespace MyTravelMicroservice.Repository
         /// <returns></returns>
         public  List<Travel> GetAllTravel()
         {
-    
-      
+
             return _context.Travels.ToList();
         } 
        
