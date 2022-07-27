@@ -132,7 +132,9 @@ Ce qu'il est requis pour commencer avec votre projet...
 	Pour ouvrir le fichier avec un editeur de text de votre choix : 
 
 	start .dockerignore 
-
+		Dockerfile
+		[b|B]in
+		[O|o]bj
  
 
 	Create Docker image 
