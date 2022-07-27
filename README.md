@@ -132,13 +132,16 @@ Ce qu'il est requis pour commencer avec votre projet...
 	Pour ouvrir le fichier avec un editeur de text de votre choix : 
 
 	start .dockerignore 
-
+		Dockerfile
+		[b|B]in
+		[O|o]bj
  
 
 	Create Docker image 
 
- 
-
+ 	
+	Créer un dossier mytravelmicroservice
+	
 	docker build -t mytravelmicroservice . 
 
  
@@ -158,8 +161,22 @@ Ce qu'il est requis pour commencer avec votre projet...
 	##Run Docker image 
 
 	You can run your app in a container using the following command: 
-	docker run -it --rm -p 3000:80 --name myMyTravelMicroservicecontainer mytravelmicroservice 
+	docker run -it --rm -p 3000:80 --name MyTravelMicroservicecontainer mytravelmicroservice 
 
+	
+## Arborescence du projet 
+
+	
+![2022-07-27 17_23_49-MyTravelMicroservice](https://user-images.githubusercontent.com/56550445/181286494-a2fb7289-9505-422d-ae1f-072efb9e7092.png)
+
+## Lancement de l'application dans Docker 
+
+![2022-07-27 17_27_53-Containers - Docker Desktop](https://user-images.githubusercontent.com/56550445/181287463-e602540a-5eab-4c40-8eb5-17fcf0845bd8.png)
+
+![2022-07-27 17_32_46-C__Windows_System32_cmd exe](https://user-images.githubusercontent.com/56550445/181287989-ec93cc45-8c02-4ff2-8075-15a9c8800763.png)
+
+![2022-07-27 17_29_50-Postman](https://user-images.githubusercontent.com/56550445/181287576-a8c1e758-3ee9-4c01-801e-8e34b37c2f22.png)
+![2022-07-27 17_30_11-Postman](https://user-images.githubusercontent.com/56550445/181287598-9a9b8962-87e7-4a50-8866-6aeb35dc5f6c.png)
 
 ## Fabriqué avec
  visual studio 2022
@@ -177,6 +194,7 @@ _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 ## Auteurs
 
 * **Moungari Moustafa ** _alias_ [@Moongari](https://github.com/Moongari)
+
 
 
 
