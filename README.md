@@ -166,7 +166,8 @@ Ce qu'il est requis pour commencer avec votre projet...
 	
 ## Arborescence du projet 
 
-	![2022-07-27 17_23_49-MyTravelMicroservice](https://user-images.githubusercontent.com/56550445/181285785-b6bef833-0184-41e4-85d6-5853a22a82f4.png)
+	
+![2022-07-27 17_23_49-MyTravelMicroservice](https://user-images.githubusercontent.com/56550445/181286494-a2fb7289-9505-422d-ae1f-072efb9e7092.png)
 
 
 ## Fabriqué avec
