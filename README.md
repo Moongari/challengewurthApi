@@ -46,7 +46,9 @@ Ce qu'il est requis pour commencer avec votre projet...
  
  une fois que vous avez recuperer le projet dans votre repertoire :
  placer vous dans le repertoire du projet "MyTravelMicroservice"
- 1° verifier que le sdk est correctement installe avec la commande : dotnet 
+ 1° verifier que le sdk est correctement installe avec la commande : 
+ 
+ 1° taper la commande :	dotnet 
  
  vous devriez obtenir ceci a l'affichage dans la console 
  
@@ -83,7 +85,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 	Create a file called Dockerfile with this command: 
 
  
-
+	commande :
 	fsutil file createnew Dockerfile 0 
 
  
@@ -91,7 +93,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 	You can then open it in your favorite text editor manually or with this command: 
 
  
-
+	 commande :
 	start Dockerfile 
 
  
@@ -123,22 +125,17 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Commande a realiser : 
-
+	commande : 
 	fsutil file createnew .dockerignore 0 
 
 	 
 
 	Pour ouvrir le fichier avec un editeur de text de votre choix : 
-
 	start .dockerignore 
 
  
 
 	Create Docker image 
-
- 
-
 	docker build -t mytravelmicroservice . 
 
  
