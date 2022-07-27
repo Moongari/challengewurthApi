@@ -36,11 +36,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Generics
 - lambda Expression
 - LINQ
-- Exception Handling
 - Asynchronous Programme with Async / await
 - API RESTFUL
 - Authentification API
-- Mise en place 
+- Controller requetes (GET,POST,PUT,DELETE)
+
 
 ## PROJET Travel
  
