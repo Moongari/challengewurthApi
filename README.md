@@ -5,6 +5,10 @@ _(juste en dessous des badges sympatiques à placer)_
 
 Cette application permet de créer une API REST via .NET5 et Visual studio community 2022
 - un backend qui fournit une API REST pour interagir avec ces données (CRUD)
+- 3 branches main,Develop,feature_Test
+- Main information application Travel
+- Develop contient le projet sans les tests
+- Feature_test integre la partie test dans le dossier 
 ## Pour commencer
 
 Recuperer le projet via le repository github : https://github.com/Moongari/challengewurthApi.git
