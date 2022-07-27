@@ -163,6 +163,8 @@ Ce qu'il est requis pour commencer avec votre projet...
 	You can run your app in a container using the following command: 
 	docker run -it --rm -p 3000:80 --name MyTravelMicroservicecontainer mytravelmicroservice 
 
+	Arborescence du projet :
+	![2022-07-27 17_23_49-MyTravelMicroservice](https://user-images.githubusercontent.com/56550445/181285785-b6bef833-0184-41e4-85d6-5853a22a82f4.png)
 
 ## Fabriqué avec
  visual studio 2022
@@ -182,7 +184,7 @@ _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 * **Moungari Moustafa ** _alias_ [@Moongari](https://github.com/Moongari)
 
 
-![2022-07-27 17_23_49-MyTravelMicroservice](https://user-images.githubusercontent.com/56550445/181285785-b6bef833-0184-41e4-85d6-5853a22a82f4.png)
+
 
 
 
