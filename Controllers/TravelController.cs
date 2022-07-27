@@ -69,7 +69,7 @@ namespace MyTravelMicroservice.Controllers
         
         }
         //DELETE: api/travel/1
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Travel> Delete(int id)
@@ -89,7 +89,7 @@ namespace MyTravelMicroservice.Controllers
 
         }
         //POST : api/travels
-        [HttpPost]
+        [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async  Task<IActionResult> AddTravel(Travel newtravel)
@@ -104,7 +104,7 @@ namespace MyTravelMicroservice.Controllers
           
         }
         //PUT : api/travel/id
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateTravel(int id, Travel Updatetravel)
