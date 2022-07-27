@@ -78,107 +78,87 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 	vous desirez integrer cette application dans un conteneur docker voici comment proceder :
 	
-	Add a DockerFile 
+	ajout du DockerFile 
 
-Create a file called Dockerfile with this command: 
-
- 
-
-fsutil file createnew Dockerfile 0 
+	Create a file called Dockerfile with this command: 
 
  
 
-You can then open it in your favorite text editor manually or with this command: 
+	fsutil file createnew Dockerfile 0 
 
  
 
-start Dockerfile 
+	You can then open it in your favorite text editor manually or with this command: 
 
  
 
-Replace the content of the Dockerfile to the following in the text editor: 
+	start Dockerfile 
 
  
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build 
+	Replace the content of the Dockerfile to the following in the text editor: 
 
-WORKDIR /src 
+ 
 
-COPY MyMicroservice.csproj . 
-
-RUN dotnet restore 
-
-COPY . . 
-
-RUN dotnet publish -c release -o /app 
-
-  
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 
-
-WORKDIR /app 
-
-COPY --from=build /app . 
-
-ENTRYPOINT ["dotnet", "MyMicroservice.dll"] 
+		FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build 
+		WORKDIR /src 
+		COPY MyTravelMicroservice.csproj . 
+		RUN dotnet restore 
+		COPY . . 
+		RUN dotnet publish -c release -o /app 
+		FROM mcr.microsoft.com/dotnet/aspnet:5.0 
+		WORKDIR /app 
+		COPY --from=build /app . 
+		ENTRYPOINT ["dotnet", "MyTravelMicroservice.dll"] 
 
  
 
  
 
-Optional: Add a .dockerignore file 
+	Optional: Add a .dockerignore file 
 
-A .dockerignore file reduces the set of files that are used as part of `docker build`. Fewer files will result in faster builds. 
+	A .dockerignore file reduces the set of files that are used as part of `docker build`. Fewer files will result in faster builds. 
 
-Create a file called .dockerignore file (this is similar to a .gitignore file if you're familiar with those) with this command: 
-
- 
-
-Commande a realiser : 
-
-fsutil file createnew .dockerignore 0 
+	Create a file called .dockerignore file (this is similar to a .gitignore file if you're familiar with those) with this command: 
 
  
 
-Pour ouvrir le fichier avec un editeur de text de votre choix : 
+	Commande a realiser : 
 
-start .dockerignore 
+	fsutil file createnew .dockerignore 0 
 
- 
+	 
 
-Create Docker image 
+	Pour ouvrir le fichier avec un editeur de text de votre choix : 
 
- 
-
-docker build -t mymicroservice . 
+	start .dockerignore 
 
  
 
+	Create Docker image 
+
  
 
-La commande docker build utilise dockerfile pour créer une image Docker. 
-
-Le paramètre -t mymicroservice lui indique de baliser (ou de nommer) l’image en tant que mymicroservice. 
-
-Le dernier paramètre lui indique le répertoire à utiliser pour trouver le Dockerfile (. spécifie le répertoire actif). 
-
-Cette commande téléchargera et créera toutes les dépendances pour créer une image Docker et peut prendre un certain temps. 
+	docker build -t mytravelmicroservice . 
 
  
 
  
 
-docker images 
+	La commande docker build utilise dockerfile pour créer une image Docker. 
+
+	Le paramètre -t mytravelmicroservice lui indique de baliser (ou de nommer) l’image en tant que mytravelmicroservice. 
+
+	Le dernier paramètre lui indique le répertoire à utiliser pour trouver le Dockerfile (. spécifie le répertoire actif). 
+
+	Cette commande téléchargera et créera toutes les dépendances pour créer une image Docker et peut prendre un certain temps. 
 
  
 
-Run Docker image 
+	##Run Docker image 
 
-You can run your app in a container using the following command: 
-
- 
-
-docker run -it --rm -p 3000:80 --name mymicroservicecontainer mymicroservice 
+	You can run your app in a container using the following command: 
+	docker run -it --rm -p 3000:80 --name myMyTravelMicroservicecontainer mytravelmicroservice 
 
 
 ## Fabriqué avec
