@@ -66,12 +66,13 @@ namespace MyTravelMicroservice.Controllers
         {
             
             var travelId = travel.GetTravelById(id);
-            
+            _logger.Log(LogLevel.Information, $"Method GetTravelById{id}");
             if (travelId == null)
             {
 
                 return NotFound(travel.Message = $"Does not exist in  database");
             }
+
             return travelId;
 
         
@@ -83,7 +84,7 @@ namespace MyTravelMicroservice.Controllers
         public ActionResult<Travel> Delete(int id)
         {
 
-
+            _logger.Log(LogLevel.Information, $"Method DeleteTravelById{id}");
             var travelId = travel.DeleteTravelById(id) ;
 
                 if (travelId == null)
@@ -106,6 +107,7 @@ namespace MyTravelMicroservice.Controllers
             if(travel != null)
             {
                await Task.Run(()=> travel.CreateTravel(newtravel));
+                _logger.Log(LogLevel.Information, $"Method AddTravel {newtravel}");
                 return CreatedAtAction(nameof(GetTravelById), new { id = newtravel.Id }, newtravel);
             }
             //_logger.LogWarning(travel.Message = $"unable to add a new item");
@@ -123,7 +125,7 @@ namespace MyTravelMicroservice.Controllers
                 //_logger.LogWarning("Bad Request : IDs are different");
                 return BadRequest(travel.Message = "IDs are different");
             }
-
+            _logger.Log(LogLevel.Information, $"Method update  id:{id}  travel : {Updatetravel}");
             await Task.Run(() => travel.UpdateTravel(id, Updatetravel));
 
             if (Updatetravel == null)
