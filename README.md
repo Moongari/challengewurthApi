@@ -1,63 +1,188 @@
-# COURSE ABOUT NET C# FRAMEWORK 4.8 & NET 6
+# Challenge NET 5
 _(juste en dessous des badges sympatiques à placer)_
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
-Ce projet a pour but de revenir sur les elements principaux du langage C# et d'aborder
-le nouvelle version NET6 et la mise en place d'un application ASP.NET6 avec Visual Studio Communinity 2022
-
+Cette application permet de créer une API REST via .NET5 et Visual studio community 2022
+- un backend qui fournit une API REST pour interagir avec ces données (CRUD)
 ## Pour commencer
 
-telecharger ce projet sur votre environnement et lancer votre ide favoris en vous placant a la racine du projet.
+Recuperer le projet via le repository github : https://github.com/Moongari/challengewurthApi.git
+
 
 
 ### Pré-requis
 
 Ce qu'il est requis pour commencer avec votre projet...
 
-- Framework 4.8
+- .NET5
+- Utilisation ou installation  du client Postman pour consommer les différents requestes .
+
 - Visual studio Community 2022
+- installation de sdk .net5
+- Afin de faciliter la mise en place et le lancement de l'application nous gerons une base de données en Memoire
+
+- dependances suivantes présentent dans le projet  :
+	Install-Package Microsoft.EntityFrameworkCore.InMemory -Version 5.0.17
+
+-les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
+		Install-Package Newtonsoft.Json -Version 13.0.1
+		
+	
 
 
-### Points Abordes
+### fonctionnalités utilisées dans le projet Travel
 
 - Generics
-- Delegate
 - lambda Expression
-- Events
-- Extension Methods
 - LINQ
-- Nullable Types
-- Dynamic
 - Exception Handling
 - Asynchronous Programme with Async / await
+- API RESTFUL
+- Authentification API
+- Mise en place 
 
-- projet Asp.NET6 CORE WEB API 
-
-
-
-
-
-Ensuite vous pouvez montrer ce que vous obtenez au final...
-
-## PROJET PIZZA
- ce projet a pour but d'aborder tous principes de la programmation orienté objet en C#.
- je reviendrai et commenterai certains point du code afin d'expliquer plus en details ce qui se passe.
+## PROJET Travel
  
- ce projet va permettre de pouvoir commander et créer des pizzas !!! Hummm miam miam
+ une fois que vous avez recuperer le projet dans votre repertoire :
+ placer vous dans le repertoire du projet "MyTravelMicroservice"
+ 1° verifier que le sdk est correctement installe avec la commande : dotnet 
+ 
+ vous devriez obtenir ceci a l'affichage dans la console 
+ 
+		Usage: dotnet [options] 
+		Usage: dotnet [path-to- application] 
 
 
+		Options : 
+		-h I --help 	Display help. 
+		- info 			Display . NET information. 
+		-list-sdks  	Display the installed SDKs.
+		- -list-runtimes Display the installed runtimes . 
+			path- to-application : 	
+		 The path to an application . dll file to execute. 	
+
+ 2° taper la commande : dotnet run
+			
+			Lancer Postman et indiquer cette adresse : (attention le numero de port peut etre différent)
+			Methode  GET 
+			Now listening on: http://localhost:5000/api/travel
+			
+			Methode GET : id
+			http://localhost:5000/api/travel/1
+			
+			
+			information : il existe jusqu'a 1000 enregistrements dans le fichier
+
+
+
+	vous desirez integrer cette application dans un conteneur docker voici comment proceder :
+	
+	Add a DockerFile 
+
+Create a file called Dockerfile with this command: 
+
+ 
+
+fsutil file createnew Dockerfile 0 
+
+ 
+
+You can then open it in your favorite text editor manually or with this command: 
+
+ 
+
+start Dockerfile 
+
+ 
+
+Replace the content of the Dockerfile to the following in the text editor: 
+
+ 
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build 
+
+WORKDIR /src 
+
+COPY MyMicroservice.csproj . 
+
+RUN dotnet restore 
+
+COPY . . 
+
+RUN dotnet publish -c release -o /app 
+
+  
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 
+
+WORKDIR /app 
+
+COPY --from=build /app . 
+
+ENTRYPOINT ["dotnet", "MyMicroservice.dll"] 
+
+ 
+
+ 
+
+Optional: Add a .dockerignore file 
+
+A .dockerignore file reduces the set of files that are used as part of `docker build`. Fewer files will result in faster builds. 
+
+Create a file called .dockerignore file (this is similar to a .gitignore file if you're familiar with those) with this command: 
+
+ 
+
+Commande a realiser : 
+
+fsutil file createnew .dockerignore 0 
+
+ 
+
+Pour ouvrir le fichier avec un editeur de text de votre choix : 
+
+start .dockerignore 
+
+ 
+
+Create Docker image 
+
+ 
+
+docker build -t mymicroservice . 
+
+ 
+
+ 
+
+La commande docker build utilise dockerfile pour créer une image Docker. 
+
+Le paramètre -t mymicroservice lui indique de baliser (ou de nommer) l’image en tant que mymicroservice. 
+
+Le dernier paramètre lui indique le répertoire à utiliser pour trouver le Dockerfile (. spécifie le répertoire actif). 
+
+Cette commande téléchargera et créera toutes les dépendances pour créer une image Docker et peut prendre un certain temps. 
+
+ 
+
+ 
+
+docker images 
+
+ 
+
+Run Docker image 
+
+You can run your app in a container using the following command: 
+
+ 
+
+docker run -it --rm -p 3000:80 --name mymicroservicecontainer mymicroservice 
 
 
 ## Fabriqué avec
-
  visual studio 2022
-
-
-
-
-## Contributing
-
 
 
 ## Versions
@@ -73,10 +198,6 @@ _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 
 * **Moungari Moustafa ** _alias_ [@Moongari](https://github.com/Moongari)
 
-
-
-
-## License
 
 
 
