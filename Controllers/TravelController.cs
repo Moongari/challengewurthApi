@@ -32,7 +32,7 @@ namespace MyTravelMicroservice.Controllers
     
 
 
-        //GET: api/travels
+        //GET: api/travel
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(Travel))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -77,7 +77,7 @@ namespace MyTravelMicroservice.Controllers
 
         
         }
-        //DELETE: api/travel/1
+        //DELETE: api/travel/Delete/1
         [HttpDelete("Delete/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -89,7 +89,7 @@ namespace MyTravelMicroservice.Controllers
 
                 if (travelId == null)
                 {
-                //_logger.LogWarning("Does not exist in  database");
+               
                 return NotFound(travel.Message = $"Does not exist in  database");
                 }
            
@@ -98,7 +98,7 @@ namespace MyTravelMicroservice.Controllers
             return Ok(travel.Message.ToString());
 
         }
-        //POST : api/travels
+        //POST : api/travel/Create
         [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -110,11 +110,11 @@ namespace MyTravelMicroservice.Controllers
                 _logger.Log(LogLevel.Information, $"Method AddTravel {newtravel}");
                 return CreatedAtAction(nameof(GetTravelById), new { id = newtravel.Id }, newtravel);
             }
-            //_logger.LogWarning(travel.Message = $"unable to add a new item");
+            
             return BadRequest(travel.Message = $"unable to add a new item");
           
         }
-        //PUT : api/travel/id
+        //PUT : api/travel/Update/id
         [HttpPut("Update/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -122,7 +122,7 @@ namespace MyTravelMicroservice.Controllers
         {
             if (!id.Equals(Updatetravel.Id))
             {
-                //_logger.LogWarning("Bad Request : IDs are different");
+               
                 return BadRequest(travel.Message = "IDs are different");
             }
             _logger.Log(LogLevel.Information, $"Method update  id:{id}  travel : {Updatetravel}");
@@ -130,7 +130,7 @@ namespace MyTravelMicroservice.Controllers
 
             if (Updatetravel == null)
             {
-                //_logger.LogWarning(travel.Message = $"Travel with Id= {id} not found");
+              
                 return NotFound(travel.Message = $"Travel with Id= {id} not found");
             }
             else
