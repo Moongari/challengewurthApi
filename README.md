@@ -12,7 +12,7 @@ Cette application permet de créer une API REST via .NET5 et Visual studio commu
 - Feature_test integre la partie test dans le dossier : MyTravelMicroservice.Test
 ## Pour commencer
 
-Recuperer le projet via le repository github : https://github.com/Moongari/challengewurthApi.git
+Récuperez le projet via le repository github : https://github.com/Moongari/challengewurthApi.git
 
 
 
@@ -24,13 +24,13 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Utilisation ou installation  du client Postman pour consommer les différents requestes .
 
 - Visual studio Community 2022
-- installation de sdk .net5 (optionnel)
+- Installation de sdk .net5 (optionnel)
 - Afin de faciliter la mise en place et le lancement de l'application nous gerons une base de données en Memoire
 
-- dependances suivantes présentent dans le projet  :
+- Dépendances suivantes présentent dans le projet  :
 	Install-Package Microsoft.EntityFrameworkCore.InMemory -Version 5.0.17
 
--les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
+- Les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
 		Install-Package Newtonsoft.Json -Version 13.0.1
 		
 	
@@ -53,9 +53,9 @@ Ce qu'il est requis pour commencer avec votre projet...
  placer vous dans le repertoire du projet "MyTravelMicroservice"
  1° verifier que le sdk est correctement installe avec la commande : 
  
- 1° taper la commande :	dotnet 
+ 1° Tapez la commande :	dotnet 
  
- vous devriez obtenir ceci a l'affichage dans la console 
+ Vous devriez obtenir ceci a l'affichage dans la console 
  
 		Usage: dotnet [options] 
 		Usage: dotnet [path-to- application] 
@@ -69,7 +69,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 			path- to-application : 	
 		 The path to an application . dll file to execute. 	
 
- 2° taper la commande : dotnet run
+ 2° Tapez la commande : dotnet run
 			
 			Lancer Postman et indiquer cette adresse : (attention le numero de port peut etre différent)
 			Methode  GET 
@@ -83,9 +83,9 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 
 
-	vous desirez integrer cette application dans un conteneur docker voici comment proceder :
+	Vous desirez integrer cette application dans un conteneur docker voici comment proceder :
 	
-	ajout du DockerFile 
+	Ajout du DockerFile 
 
 	Create a file called Dockerfile with this command: 
 
@@ -176,7 +176,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
 _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 
-## Auteurs
+## Auteur
 
 * **Moungari Moustafa ** _alias_ [@Moongari](https://github.com/Moongari)
 
