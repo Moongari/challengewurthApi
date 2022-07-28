@@ -194,7 +194,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
 _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 
-## Auteurs
+## Auteur
 
 * **Moungari Moustafa ** _alias_ [@Moongari](https://github.com/Moongari)
 
