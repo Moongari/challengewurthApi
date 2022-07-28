@@ -30,6 +30,8 @@ Ce qu'il est requis pour commencer avec votre projet...
 		
 	
 - Si vous télécharger a partir de la branche features_test le dossier zip , veuillez placer le dossier MyTravelMicroservice.Test au meme niveau que le dossier
+	MyTravelMicroservice
+	
 	![2022-07-28 13_52_17-Window](https://user-images.githubusercontent.com/56550445/181498185-988933f5-d024-40f3-9e4e-89e905d3644b.png)
 
 
