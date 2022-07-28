@@ -24,7 +24,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Utilisation ou installation  du client Postman pour consommer les différents requestes .
 
 - Visual studio Community 2022
-- installation de sdk .net5
+- installation de sdk .net5 (optionnel)
 - Afin de faciliter la mise en place et le lancement de l'application nous gerons une base de données en Memoire
 
 - dependances suivantes présentent dans le projet  :
