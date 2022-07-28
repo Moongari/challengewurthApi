@@ -29,6 +29,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
 		Install-Package Newtonsoft.Json -Version 13.0.1
 		
+- La branche develop contient le projet sans la partie test , cette branche contient donc le projet tel qu'il devrai fonctionner.
+- La branche features_test reprends le projet ainsi que les tests lié a l'application 
+- Remarque : 
+	ce choix a été fait afin de volotairement distinguer et permettre de gérer l'un ou l'autre au besoin.
+		
 	
 
 
