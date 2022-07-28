@@ -20,7 +20,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Utilisation ou installation  du client Postman pour consommer les différents requestes .
 - Authentification : les credentials sont présentes dans le fichier appsettings.json
 - Visual studio Community 2022
-- Installation de sdk .net5
+- Installation de sdk .net5 (optionnel)
 - Afin de faciliter la mise en place et le lancement de l'application nous gerons une base de données en Memoire
 
 - Dependances suivantes présentent dans le projet  :
