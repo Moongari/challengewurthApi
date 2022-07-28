@@ -17,18 +17,20 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 - .NET5
 - Utilisation ou installation  du client Postman pour consommer les différents requestes .
-
+- Authentification : les credentials sont présentes dans le fichier appsettings.json
 - Visual studio Community 2022
-- installation de sdk .net5
+- Installation de sdk .net5 (optionnel)
 - Afin de faciliter la mise en place et le lancement de l'application nous gerons une base de données en Memoire
 
-- dependances suivantes présentent dans le projet  :
+- Dependances suivantes présentent dans le projet  :
 	Install-Package Microsoft.EntityFrameworkCore.InMemory -Version 5.0.17
 
--les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
+- Les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
 		Install-Package Newtonsoft.Json -Version 13.0.1
 		
 	
+- Si vous télécharger a partir de la branche features_test le dossier zip , veuillez placer le dossier MyTravelMicroservice.Test au meme niveau que le dossier
+	![2022-07-28 13_52_17-Window](https://user-images.githubusercontent.com/56550445/181498185-988933f5-d024-40f3-9e4e-89e905d3644b.png)
 
 
 ### fonctionnalités utilisées dans le projet Travel
@@ -42,7 +44,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Authentification API
 - Mise en place 
 
-## PROJET Travel
+## PROJET TRAVEL
  
  une fois que vous avez recuperer le projet dans votre repertoire :
  placer vous dans le repertoire du projet "MyTravelMicroservice"
@@ -80,7 +82,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 	
 	ajout du DockerFile 
 
-	Create a file called Dockerfile with this command: 
+	Créez un fichier appelé Dockerfile avec cette commande : 
 
  
 
@@ -88,7 +90,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	You can then open it in your favorite text editor manually or with this command: 
+	Vous pouvez ensuite l’ouvrir manuellement dans votre éditeur de texte préféré ou avec cette commande:
 
  
 
@@ -96,7 +98,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Replace the content of the Dockerfile to the following in the text editor: 
+	Copiez ce contenu du Dockerfile par ce qui suit dans l’éditeur de texte :
 
  
 
@@ -115,11 +117,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Optional: Add a .dockerignore file 
+	Facultatif : Ajouter un fichier .dockerignore 
 
-	A .dockerignore file reduces the set of files that are used as part of `docker build`. Fewer files will result in faster builds. 
+	Un fichier .dockerignore réduit l’ensemble des fichiers utilisés dans le cadre de la version docker. Moins de fichiers se traduira par des builds plus rapides. 
 
-	Create a file called .dockerignore file (this is similar to a .gitignore file if you're familiar with those) with this command: 
+	Créez un fichier appelé fichier .dockerignore (similaire à un fichier .gitignore si vous les connaissez) avec cette commande : 
 
  
 
@@ -174,7 +176,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
 _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 
-## Auteurs
+## Auteur
 
 * **Moungari Moustafa ** _alias_ [@Moongari](https://github.com/Moongari)
 
