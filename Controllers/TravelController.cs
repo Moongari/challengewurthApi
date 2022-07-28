@@ -26,7 +26,7 @@ namespace MyTravelMicroservice.Controllers
             travel = new TravelRepository(_context);
          
         }
-        //GET: api/travels
+        //GET: api/travel
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(Travel))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -68,7 +68,7 @@ namespace MyTravelMicroservice.Controllers
 
         
         }
-        //DELETE: api/travel/1
+        //DELETE: api/travel/Delete/1
         [HttpDelete("Delete/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -88,7 +88,7 @@ namespace MyTravelMicroservice.Controllers
             return Ok(travel.Message.ToString());
 
         }
-        //POST : api/travels
+        //POST : api/travel/Create
         [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -103,7 +103,7 @@ namespace MyTravelMicroservice.Controllers
             return BadRequest(travel.Message = $"unable to add a new item");
           
         }
-        //PUT : api/travel/id
+        //PUT : api/travel/Update/id
         [HttpPut("Update/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
