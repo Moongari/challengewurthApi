@@ -7,7 +7,8 @@ Cette application permet de créer une API REST via .NET5 et Visual studio commu
 - un backend qui fournit une API REST pour interagir avec ces données (CRUD)
 ## Pour commencer
 
-Recuperer le projet via le repository github : https://github.com/Moongari/challengewurthApi.git
+- Vous pouvez obtenir le projet via le repository github : https://github.com/Moongari/challengewurthApi.git 
+et faire un download du fichier .ZIP
 
 
 
@@ -17,15 +18,15 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 - .NET5
 - Utilisation ou installation  du client Postman pour consommer les différents requestes .
-
+- Authentification : les credentials sont présentes dans le fichier appsettings.json
 - Visual studio Community 2022
-- installation de sdk .net5
+- Installation de sdk .net5
 - Afin de faciliter la mise en place et le lancement de l'application nous gerons une base de données en Memoire
 
-- dependances suivantes présentent dans le projet  :
+- Dependances suivantes présentent dans le projet  :
 	Install-Package Microsoft.EntityFrameworkCore.InMemory -Version 5.0.17
 
--les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
+- Les données sont issues d'un fichier data.json pour gerer la deserialisation nous utilisons NewtonSoft.JSon(13.0.1)
 		Install-Package Newtonsoft.Json -Version 13.0.1
 		
 	
@@ -44,11 +45,13 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 ## PROJET Travel
  
- une fois que vous avez recuperer le projet dans votre repertoire :
+ Une fois que vous avez recuperer le projet dans votre repertoire :
  placer vous dans le repertoire du projet "MyTravelMicroservice"
- 1° verifier que le sdk est correctement installe avec la commande : dotnet 
+ 1° verifier que le sdk est correctement installé : 
+ 	Commande a realiser :
+ 	dotnet 
  
- vous devriez obtenir ceci a l'affichage dans la console 
+ Vous devriez obtenir ceci a l'affichage dans la console 
  
 		Usage: dotnet [options] 
 		Usage: dotnet [path-to- application] 
@@ -62,7 +65,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 			path- to-application : 	
 		 The path to an application . dll file to execute. 	
 
- 2° taper la commande : dotnet run
+ 2° Tapez la commande :   dotnet run
 			
 			Lancer Postman et indiquer cette adresse : (attention le numero de port peut etre différent)
 			Methode  GET 
@@ -76,11 +79,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 
 
-	vous desirez integrer cette application dans un conteneur docker voici comment proceder :
+	Vous desirez integrer cette application dans un conteneur docker voici comment proceder :
 	
 	ajout du DockerFile 
 
-	Create a file called Dockerfile with this command: 
+	Créez un fichier appelé Dockerfile avec cette commande :
 
  
 
@@ -88,7 +91,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	You can then open it in your favorite text editor manually or with this command: 
+	Vous pouvez ensuite l’ouvrir manuellement dans votre éditeur de texte préféré ou avec cette commande:
 
  
 
@@ -96,7 +99,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Replace the content of the Dockerfile to the following in the text editor: 
+	Copiez ce contenu du Dockerfile par ce qui suit dans l’éditeur de texte :
 
  
 
@@ -115,11 +118,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Optional: Add a .dockerignore file 
+	Facultatif : Ajouter un fichier .dockerignore 
 
-	A .dockerignore file reduces the set of files that are used as part of `docker build`. Fewer files will result in faster builds. 
+	Un fichier .dockerignore réduit l’ensemble des fichiers utilisés dans le cadre de la version docker. Moins de fichiers se traduira par des builds plus rapides. 
 
-	Create a file called .dockerignore file (this is similar to a .gitignore file if you're familiar with those) with this command: 
+	Créez un fichier appelé fichier .dockerignore (similaire à un fichier .gitignore si vous les connaissez) avec cette commande : 
 
  
 
@@ -160,7 +163,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 	##Run Docker image 
 
-	You can run your app in a container using the following command: 
+	Vous pouvez exécuter votre application dans un conteneur à l’aide de la commande suivante :
 	docker run -it --rm -p 3000:80 --name MyTravelMicroservicecontainer mytravelmicroservice 
 
 	
