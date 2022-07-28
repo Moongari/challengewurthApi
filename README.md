@@ -5,6 +5,7 @@ _(juste en dessous des badges sympatiques à placer)_
 
 Cette application permet de créer une API REST via .NET5 et Visual studio community 2022
 - un backend qui fournit une API REST pour interagir avec ces données (CRUD)
+- Authentification : les credentials sont présentes dans le fichier appsettings.json
 - 3 branches main,Develop,feature_Test
 - Main information application Travel
 - Develop contient le projet sans les tests
@@ -94,7 +95,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	You can then open it in your favorite text editor manually or with this command: 
+	Vous pouvez ensuite l’ouvrir manuellement dans votre éditeur de texte préféré ou avec cette commande:
 
  
 	 commande :
@@ -102,7 +103,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Replace the content of the Dockerfile to the following in the text editor: 
+	Copier  le contenu du Dockerfile par ce qui suit dans l’éditeur de texte
 
  
 
@@ -121,11 +122,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Optional: Add a .dockerignore file 
+	Facultatif : Ajouter un fichier .dockerignore 
 
-	A .dockerignore file reduces the set of files that are used as part of `docker build`. Fewer files will result in faster builds. 
+	Un fichier .dockerignore réduit l’ensemble des fichiers utilisés dans le cadre de la version docker. Moins de fichiers se traduira par des builds plus rapides. 
 
-	Create a file called .dockerignore file (this is similar to a .gitignore file if you're familiar with those) with this command: 
+	Créez un fichier appelé fichier .dockerignore (similaire à un fichier .gitignore si vous les connaissez) avec cette commande : 
 
  
 
@@ -139,7 +140,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
  
 
-	Create Docker image 
+	Créer Docker image 
 	docker build -t mytravelmicroservice . 
 
  
@@ -158,7 +159,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 	##Run Docker image 
 
-	You can run your app in a container using the following command: 
+	Vous pouvez exécuter votre application dans un conteneur à l’aide de la commande suivante :
 	docker run -it --rm -p 3000:80 --name myMyTravelMicroservicecontainer mytravelmicroservice 
 
 
